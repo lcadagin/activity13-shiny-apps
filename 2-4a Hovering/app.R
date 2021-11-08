@@ -29,8 +29,8 @@ ui <- fluidPage(
     ),
     
     mainPanel(
-      plotOutput(outputId = "scatterplot", brush = "plot_brush"),
-      DT::dataTableOutput(outputId = "moviestable"),
+      plotOutput(outputId = "scatterplot", hover = "plot_hover"),
+      dataTableOutput(outputId = "moviestable"),
       br()
     )
   )
@@ -46,7 +46,7 @@ server <- function(input, output, session) {
   })
   
   output$moviestable <- renderDataTable({
-    brushedPoints(movies, brush = input$plot_brush) %>%
+    nearPoints(movies, input$plot_hover) %>%
       select(title, audience_score, critics_score)
   })
 }
