@@ -12,6 +12,8 @@ load("movies.RData")
 # Define UI --------------------------------------------------------------------
 
 ui <- fluidPage(
+  theme = shinytheme("superhero"),
+  
   sidebarLayout(
     sidebarPanel(
       selectInput(

@@ -7,7 +7,7 @@ library(shiny)
 
 ui <- fluidPage(
   titlePanel("An image"),
-  tags$img(___),
+  tags$img(height = 100, width = 300, src = "roles_implement.png"),
 )
 
 # Define server ----------------------------------------------------------------

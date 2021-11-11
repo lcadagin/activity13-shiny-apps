@@ -79,8 +79,10 @@ ui <- fluidPage(
     ),
     
     mainPanel(
-      tags$br(),
-      ___, # add text here
+      #br(),
+      p("These data were obtained from ", a("IMDB", href="http://www.imbd.com/"), "and ", 
+      a("Rotten Tomatoes", href="https://www.rottentomatoes.com/"), "."),
+      p("The data represent ", nrow(movies), " randomly sampled movies released between 1972 to 2014 in the United States."), # add text here
       plotOutput(outputId = "scatterplot")
     )
   )
@@ -93,7 +95,8 @@ server <- function(input, output, session) {
     eventExpr = input$update_plot_title,
     valueExpr = {
       toTitleCase(input$plot_title)
-    }
+    },
+    ignoreNULL = FALSE
   )
   
   output$scatterplot <- renderPlot({
